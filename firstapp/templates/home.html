@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cricket World | Gallery</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #071b16;
+            color: white;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 7%;
+            background: #0b2920;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            color: #35e68b;
+        }
+
+        .logout {
+            background: #35e68b;
+            color: #071b16;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .logout:hover {
+            background: white;
+            transform: scale(1.08);
+        }
+
+        /* HERO SECTION */
+
+        .hero {
+            min-height: 420px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 20px;
+
+            background:
+                linear-gradient(rgba(0,20,10,0.65), rgba(0,20,10,0.8)),
+                url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=1600');
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(35px, 6vw, 65px);
+            font-weight: 800;
+            animation: slideDown 1s ease;
+        }
+
+        .hero h1 span {
+            color: #35e68b;
+        }
+
+        .hero p {
+            margin-top: 15px;
+            font-size: 17px;
+            animation: fadeIn 2s ease;
+        }
+
+        .hero button {
+            margin-top: 30px;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 30px;
+            background: #35e68b;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .hero button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px #35e68b;
+        }
+
+        /* GALLERY SECTION */
+
+        .gallery-section {
+            padding: 60px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 35px;
+            color: #35e68b;
+        }
+
+        .section-title p {
+            color: #aaa;
+            margin-top: 10px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        /* IMAGE CARDS */
+
+        .card {
+            background: #10352a;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: 0.4s;
+            animation: fadeUp 1s ease both;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 12px 30px rgba(53,230,139,0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.12);
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            color: #35e68b;
+            font-size: 20px;
+        }
+
+        .card-content p {
+            color: #ccc;
+            margin-top: 8px;
+            font-size: 14px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #0b2920;
+            text-align: center;
+            padding: 25px;
+            color: #aaa;
+            margin-top: 30px;
+        }
+
+        /* ANIMATIONS */
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* MOBILE RESPONSIVE */
+
+        @media(max-width: 600px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            .logo {
+                font-size: 19px;
+            }
+
+            .hero {
+                min-height: 350px;
+            }
+
+            .gallery-section {
+                padding: 40px 5%;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">🏏 CRICKET WORLD</div>
+
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="logout">Logout</button>
+        </form>
+
+    </nav>
+
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+        <h1>Welcome,Buddy!</h1>
+
+        <p>Experience the passion, energy and excitement of cricket.</p>
+
+        <button onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">
+            Explore Gallery
+        </button>
+
+    </section>
+
+
+    <!-- GALLERY SECTION -->
+
+    <section class="gallery-section" id="gallery">
+
+        <div class="section-title">
+
+            <h2>🏆 Cricket Moments</h2>
+
+            <p>Every shot tells a story. Every match creates history.</p>
+
+        </div>
+
+
+        <div class="gallery">
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=800" alt="Cricket stadium">
+                <div class="card-content">
+                    <h3>Cricket Stadium</h3>
+                    <p>Feel the excitement of the cricket ground.</p>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800" alt="Sports stadium">
+                <div class="card-content">
+                    <h3>Match Day</h3>
+                    <p>The energy and atmosphere of a big match.</p>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1593341646782-e0b495cff86d?w=800" alt="Cricket action">
+                <div class="card-content">
+                    <h3>Cricket Action</h3>
+                    <p>Enjoy the thrill of competitive sports.</p>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_0mpPh5ZZDnSxLUc0CFtowpUmKv4BjOwnMI2_0mE9QQ&s=10" alt="Sports game">
+                <div class="card-content">
+                    <h3>Game Time</h3>
+                    <p>Every moment brings a new opportunity.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>🏏 Cricket World | Made with ❤️ for Cricket Lovers</p>
+
+        <p>© 2026 All Rights Reserved</p>
+
+    </footer>
+
+</body>
+</html>
